@@ -13,7 +13,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         // Load the main FXML file
-        Parent root = FXMLLoader.load(getClass().getResource("../main.resources.fxml/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/login.fxml"));
 
         // Set up the primary stage
         primaryStage.setTitle("Pharmacy Management System | Login");
