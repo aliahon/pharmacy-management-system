@@ -23,4 +23,22 @@ public class Database {
             }
         }
     }
+    public static void main(String[] args) {
+        try {
+            // Attempt to establish a connection to the database
+            Connection connection = Database.getConnection();
+            
+            // If the connection is successful, print a success message
+            System.out.println("Connection to the database established successfully!");
+            
+            // Don't forget to close the connection when you're done using it
+            Database.closeConnection(connection);
+        } catch (SQLException e) {
+            // If there's an error during the connection process, print the error message
+            System.err.println("Error connecting to the database: " + e.getMessage());
+            // You can also print the stack trace for more details
+            e.printStackTrace();
+        }
+    }
 }
+
