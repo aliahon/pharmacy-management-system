@@ -4,39 +4,70 @@ import javafx.beans.property.*;
 
 public class User {
 
-    private final StringProperty username;
-    private final StringProperty role;
+    private  StringProperty firstName;
+    private  StringProperty lastName;
+    private  StringProperty email;
+    private  StringProperty tel;
+    private  StringProperty username;
+    private  StringProperty password;
 
     // Constructor
-    public User(String username, String role) {
-        this.username = new SimpleStringProperty(username);
-        this.role = new SimpleStringProperty(role);
+    public User(String firstName,String lastName,String email,String tel,String username,String password) {
+        this.setFirstName(new SimpleStringProperty(firstName));
+        this.setLastName(new SimpleStringProperty(lastName));
+        this.setEmail(new SimpleStringProperty(email));
+        this.setTel(new SimpleStringProperty(tel));
+        this.setUsername(new SimpleStringProperty(username));
+        this.setPassword(new SimpleStringProperty(password));
     }
 
-    // Getter methods
-    public String getUsername() {
-        return username.get();
-    }
+	public StringProperty getFirstName() {
+		return firstName;
+	}
 
-    public String getRole() {
-        return role.get();
-    }
+	public void setFirstName(StringProperty firstName) {
+		this.firstName = firstName;
+	}
 
-    // Setter methods
-    public void setUsername(String username) {
-        this.username.set(username);
-    }
+	public StringProperty getLastName() {
+		return lastName;
+	}
 
-    public void setRole(String role) {
-        this.role.set(role);
-    }
+	public void setLastName(StringProperty lastName) {
+		this.lastName = lastName;
+	}
 
-    // Property getters
-    public StringProperty usernameProperty() {
-        return username;
-    }
+	public StringProperty getEmail() {
+		return email;
+	}
 
-    public StringProperty roleProperty() {
-        return role;
-    }
+	public void setEmail(StringProperty email) {
+		this.email = email;
+	}
+
+	public StringProperty getTel() {
+		return tel;
+	}
+
+	public void setTel(StringProperty tel) {
+		this.tel = tel;
+	}
+
+	public StringProperty getUsername() {
+		return username;
+	}
+
+	public void setUsername(StringProperty username) {
+		this.username = username;
+	}
+
+	public StringProperty getPassword() {
+		return password;
+	}
+
+	public void setPassword(StringProperty password) {
+		this.password = password;
+	}
+
+
 }

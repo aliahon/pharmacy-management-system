@@ -2,6 +2,7 @@ package main.java.controller;
 
 import main.java.model.User;
 import main.java.service.UserService;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
@@ -11,7 +12,7 @@ import javafx.scene.control.TextField;
 public class UserController {
 
     @FXML
-    private TableView<User> userTableView;
+    private TableView<User> userTableView; //hada howa id li t3ty l tableaux dylk
 
     @FXML
     private TableColumn<User, String> usernameColumn;
@@ -20,34 +21,44 @@ public class UserController {
     private TableColumn<User, String> roleColumn;
 
     @FXML
-    private TextField usernameTextField;
-
+    private TextField firstNameTextField;
     @FXML
-    private TextField roleTextField;
-
+    private TextField lastNameTextField;
+    @FXML
+    private TextField emailTextField;
+    @FXML
+    private TextField telTextField;
+    @FXML
+    private TextField usernameTextField;
+    @FXML
+    private TextField passwordPasswordField;
+    
     private UserService userService;
 
     public UserController() {
         this.userService = new UserService();
     }
-
+/*  MARYAM HNA ADIRI L CODE DYL DIK LISTES DES UTILISATEURS
     @FXML
     private void initialize() {
         // Initialize table columns
         usernameColumn.setCellValueFactory(cellData -> cellData.getValue().usernameProperty());
-        roleColumn.setCellValueFactory(cellData -> cellData.getValue().roleProperty());
-
         // Populate table with existing users
         userTableView.setItems(userService.getAllUsers());
-    }
+    }*/
+    
 
     @FXML
     private void handleAddUser() {
+        String firstName = firstNameTextField.getText().trim();
+        String lastName = lastNameTextField.getText().trim();
+        String email = emailTextField.getText().trim();
+        String tel = telTextField.getText().trim();
         String username = usernameTextField.getText().trim();
-        String role = roleTextField.getText().trim();
+        String password = passwordPasswordField.getText().trim();
 
-        if (!username.isEmpty() && !role.isEmpty()) {
-            User newUser = new User(username, role);
+        if (!firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty() && !tel.isEmpty() && !username.isEmpty() && !password.isEmpty() ) {
+            User newUser = new User(firstName,lastName, email, tel,username,password);
             userService.addUser(newUser);
             userTableView.getItems().add(newUser);
             clearFields();
@@ -58,7 +69,6 @@ public class UserController {
 
     private void clearFields() {
         usernameTextField.clear();
-        roleTextField.clear();
     }
 
     private void showAlert(String title, String message) {
