@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D8F1EE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.UserController">
+   <children>
+      <Label layoutX="192.0" layoutY="36.0" text="Ajouter Utilisateur!">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="101.0" layoutY="83.0" text="Nom">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="324.0" layoutY="83.0" text="Prenom">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="324.0" layoutY="153.0" text="Numero téléphone">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="101.0" layoutY="153.0" text="Email">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="101.0" layoutY="244.0" text="Nom utilisateur">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="324.0" layoutY="244.0" text="Mot de passe">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="99.0" layoutY="110.0" />
+      <TextField layoutX="324.0" layoutY="110.0" />
+      <TextField layoutX="101.0" layoutY="189.0" />
+      <TextField layoutX="101.0" layoutY="271.0" />
+      <TextField layoutX="324.0" layoutY="189.0" />
+      <Button layoutX="261.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #3eb59d;" text="Ajouter">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="400.0" fitWidth="99.0" layoutY="2.0" opacity="0.81" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/backgroundSmall.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="505.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #3eb59d;" text="Exit">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <PasswordField layoutX="324.0" layoutY="271.0" />
+   </children>
+</AnchorPane>

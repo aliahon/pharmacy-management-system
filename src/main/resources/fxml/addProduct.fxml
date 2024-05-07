@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D8F1EE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="208.0" layoutY="35.0" text="Ajouter Produit!">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="115.0" layoutY="93.0" text="Nom de Produit">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="335.0" layoutY="239.0" text="Catégorie">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="114.0" layoutY="159.0" text="Nom de fabriquant">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="118.0" layoutY="239.0" text="Prix de Vente">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="113.0" layoutY="120.0" prefHeight="25.0" prefWidth="374.0" />
+      <TextField layoutX="335.0" layoutY="266.0" />
+      <TextField layoutX="117.0" layoutY="266.0" />
+      <TextField layoutX="113.0" layoutY="186.0" prefHeight="25.0" prefWidth="374.0" />
+      <Button layoutX="247.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #3eb59d;" text="Ajouter">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="400.0" fitWidth="99.0" layoutY="2.0" opacity="0.81" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/backgroundSmall.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="505.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #3eb59d;" text="Exit">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
