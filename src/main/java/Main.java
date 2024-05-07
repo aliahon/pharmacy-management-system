@@ -16,7 +16,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/login.fxml"));
 
         // Set up the primary stage
-        primaryStage.setTitle("Pharmacy Management System");
+        primaryStage.setTitle("Pharmacy Management System | Login");
         primaryStage.setScene(new Scene(root, 600,400));
         primaryStage.show();
     }

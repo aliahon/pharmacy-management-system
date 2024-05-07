@@ -16,7 +16,7 @@
          <children>
             <ImageView fitHeight="519.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Desktop/53aed67c2ff3fb5330f10faf65f3c389.jpg" />
+                  <Image url="@../images/background.jpg" />
                </image>
             </ImageView>
          </children>
