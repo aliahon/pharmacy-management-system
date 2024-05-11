@@ -46,12 +46,12 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="99.0" layoutY="110.0" />
-      <TextField layoutX="324.0" layoutY="110.0" />
-      <TextField layoutX="101.0" layoutY="189.0" />
-      <TextField layoutX="101.0" layoutY="271.0" />
-      <TextField layoutX="324.0" layoutY="189.0" />
-      <Button layoutX="261.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #3eb59d;" text="Ajouter">
+      <TextField fx:id="lastNameTextField" layoutX="99.0" layoutY="110.0" />
+      <TextField fx:id="firstNameTextField" layoutX="324.0" layoutY="110.0" />
+      <TextField fx:id="emailTextField" layoutX="101.0" layoutY="189.0" />
+      <TextField fx:id="usernameTextField" layoutX="101.0" layoutY="271.0" />
+      <TextField fx:id="telTextField" layoutX="324.0" layoutY="189.0" />
+      <Button fx:id="addUserButton" layoutX="261.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #3eb59d;" text="Ajouter">
          <font>
             <Font size="17.0" />
          </font>
@@ -61,11 +61,11 @@
             <Image url="@../images/backgroundSmall.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="505.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #3eb59d;" text="Exit">
+      <Button fx:id="exitAddUser" layoutX="505.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #3eb59d;" text="Exit">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <PasswordField layoutX="324.0" layoutY="271.0" />
+      <PasswordField fx:id="passwordPasswordField" layoutX="324.0" layoutY="271.0" />
    </children>
 </AnchorPane>

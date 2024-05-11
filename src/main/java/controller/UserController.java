@@ -2,12 +2,13 @@ package main.java.controller;
 
 import main.java.model.User;
 import main.java.service.UserService;
-import javafx.beans.property.StringProperty;
+//import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 
 public class UserController {
 
@@ -17,8 +18,6 @@ public class UserController {
     @FXML
     private TableColumn<User, String> usernameColumn;
 
-    @FXML
-    private TableColumn<User, String> roleColumn;
 
     @FXML
     private TextField firstNameTextField;
@@ -31,13 +30,14 @@ public class UserController {
     @FXML
     private TextField usernameTextField;
     @FXML
-    private TextField passwordPasswordField;
+    private PasswordField passwordPasswordField;
     
     private UserService userService;
 
     public UserController() {
         this.userService = new UserService();
     }
+    
 /*  MARYAM HNA ADIRI L CODE DYL DIK LISTES DES UTILISATEURS
     @FXML
     private void initialize() {
