@@ -42,7 +42,7 @@
             </Label>
             <TextField fx:id="username" layoutX="154.0" layoutY="129.0" prefHeight="34.0" prefWidth="158.0" />
             <PasswordField fx:id="password" layoutX="156.0" layoutY="206.0" prefHeight="32.0" prefWidth="154.0" />
-            <Button fx:id="login" layoutX="131.0" layoutY="280.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="83.0" style="-fx-background-color: #d7f5ef;" text="Login" textFill="#3eb59d">
+            <Button fx:id="login" layoutX="131.0" layoutY="280.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="44.0" prefWidth="83.0" style="-fx-background-color: #d7f5ef;" text="Login" textFill="#3eb59d">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

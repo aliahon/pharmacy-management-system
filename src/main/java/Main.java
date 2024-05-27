@@ -9,9 +9,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+	
+	private static Stage stg;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+    	stg = primaryStage;
+    	primaryStage.setResizable(false);
         // Load the main FXML file
         Parent root = FXMLLoader.load(getClass().getResource("../resources/fxml/login.fxml"));
 
@@ -19,6 +23,11 @@ public class Main extends Application {
         primaryStage.setTitle("Pharmacy Management System | Login");
         primaryStage.setScene(new Scene(root, 600,400));
         primaryStage.show();
+    }
+    
+    public void changeScene(String fxml) throws IOException {
+    	Parent pane= FXMLLoader.load(getClass().getResource(fxml));
+    	stg.getScene().setRoot(pane);
     }
 
     public static void main(String[] args) {

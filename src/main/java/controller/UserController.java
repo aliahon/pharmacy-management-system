@@ -42,7 +42,8 @@ public class UserController {
     @FXML
     private void initialize() {
         // Initialize table columns
-        usernameColumn.setCellValueFactory(cellData -> cellData.getValue().usernameProperty());
+        usernameColumn.setCellValueFactory(cellData -
+        > cellData.getValue().usernameProperty());
         // Populate table with existing users
         userTableView.setItems(userService.getAllUsers());
     }*/
