@@ -21,7 +21,7 @@ public class Main extends Application {
 
         // Set up the primary stage
         primaryStage.setTitle("Pharmacy Management System | Login");
-        primaryStage.setScene(new Scene(root, 600,400));
+        primaryStage.setScene(new Scene(root, 729,402));
         primaryStage.show();
     }
     

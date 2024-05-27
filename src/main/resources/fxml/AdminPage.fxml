@@ -14,27 +14,27 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="125.0" layoutY="122.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Utilisateurs" textFill="#f8f6f6">
+      <Button fx:id="utilisateurButton" layoutX="125.0" layoutY="122.0" mnemonicParsing="false" onAction="#versUtilisateur" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Utilisateurs" textFill="#f8f6f6">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="347.0" layoutY="122.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Produits" textFill="#f5f5f5">
+      <Button fx:id="produitButton" layoutX="347.0" layoutY="122.0" mnemonicParsing="false" onAction="#versProduit" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Produits" textFill="#f5f5f5">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="125.0" layoutY="188.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Ventes" textFill="#f8f6f6">
+      <Button fx:id="venteButton" layoutX="125.0" layoutY="188.0" mnemonicParsing="false" onAction="#versVente" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Ventes" textFill="#f8f6f6">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="347.0" layoutY="253.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Fournisseurs" textFill="#f8f6f6">
+      <Button fx:id="fournisseurButton" layoutX="347.0" layoutY="253.0" mnemonicParsing="false" onAction="#versFournisseur" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Fournisseurs" textFill="#f8f6f6">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="509.0" layoutY="361.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="69.0" style="-fx-background-color: #3eb59d;" text="Log out" textFill="#f8f6f6">
+      <Button fx:id="logOut" layoutX="509.0" layoutY="361.0" mnemonicParsing="false" onAction="#userLogOut" prefHeight="16.0" prefWidth="69.0" style="-fx-background-color: #3eb59d;" text="Log out" textFill="#f8f6f6">
          <font>
             <Font size="14.0" />
          </font>
@@ -44,12 +44,12 @@
             <Image url="@../../../../bin/main/resources/images/backgroundSmall.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="347.0" layoutY="188.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Achats" textFill="#f8f6f6">
+      <Button fx:id="achatButton" layoutX="347.0" layoutY="188.0" mnemonicParsing="false" onAction="#versAchat" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Achats" textFill="#f8f6f6">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="125.0" layoutY="253.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Catégories" textFill="#f8f6f6">
+      <Button fx:id="categoryButton" layoutX="125.0" layoutY="253.0" mnemonicParsing="false" onAction="#versCategory" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Catégories" textFill="#f8f6f6">
          <font>
             <Font size="18.0" />
          </font>
