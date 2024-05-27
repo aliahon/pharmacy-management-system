@@ -7,34 +7,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D8F1EE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D8F1EE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.Pharmacist">
    <children>
       <Label layoutX="175.0" layoutY="44.0" text="Bienvenue pharmacist">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="125.0" layoutY="122.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Profil" textFill="#f8f6f6">
+      <Button fx:id="profilButton" layoutX="125.0" layoutY="122.0" mnemonicParsing="false" onAction="#versProfil" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Profil" textFill="#f8f6f6">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="347.0" layoutY="122.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Produits" textFill="#f5f5f5">
+      <Button fx:id="produitButton" layoutX="347.0" layoutY="122.0" mnemonicParsing="false" onAction="#versProduit" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Produits" textFill="#f5f5f5">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="125.0" layoutY="199.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Ventes" textFill="#f8f6f6">
+      <Button fx:id="venteButton" layoutX="125.0" layoutY="199.0" mnemonicParsing="false" onAction="#versVente" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Ventes" textFill="#f8f6f6">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="347.0" layoutY="277.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Fournisseurs" textFill="#f8f6f6">
+      <Button fx:id="fournisseurButton" layoutX="347.0" layoutY="277.0" mnemonicParsing="false" onAction="#versFournisseur" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Fournisseurs" textFill="#f8f6f6">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="507.0" layoutY="343.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="71.0" style="-fx-background-color: #3eb59d;" text="Log out" textFill="#f8f6f6">
+      <Button fx:id="logOut" layoutX="507.0" layoutY="343.0" mnemonicParsing="false" onAction="#userLogOut" prefHeight="35.0" prefWidth="71.0" style="-fx-background-color: #3eb59d;" text="Log out" textFill="#f8f6f6">
          <font>
             <Font size="14.0" />
          </font>
@@ -44,12 +44,12 @@
             <Image url="@../../../../bin/main/resources/images/backgroundSmall.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="125.0" layoutY="277.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Achats" textFill="#f8f6f6">
+      <Button fx:id="achatButton" layoutX="125.0" layoutY="277.0" mnemonicParsing="false" onAction="#versAchat" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Achats" textFill="#f8f6f6">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="347.0" layoutY="199.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Catégories" textFill="#f8f6f6">
+      <Button fx:id="categoryButton" layoutX="347.0" layoutY="199.0" mnemonicParsing="false" onAction="#versCategory" prefHeight="46.0" prefWidth="127.0" style="-fx-background-color: #3eb59d;" text="Catégories" textFill="#f8f6f6">
          <font>
             <Font size="18.0" />
          </font>
