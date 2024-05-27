@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D8F1EE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="208.0" layoutY="35.0" text="Ajouter Vente!">
+      <Label layoutX="208.0" layoutY="35.0" text="Ajouter Catégorie!">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

@@ -46,14 +46,14 @@ public class Admin {
 	@FXML
     private void versVente(ActionEvent event) throws IOException{
         Main m = new Main();
-        m.changeScene("../resources/fxml/SalesTable(Adm).fxml");
+        m.changeScene("../resources/fxml/SalesTable.fxml");
     }
 	
 	
 	@FXML
     private void versAchat(ActionEvent event) throws IOException{
         Main m = new Main();
-        m.changeScene("../resources/fxml/Table_Achat_Admin.fxml");
+        m.changeScene("../resources/fxml/TableAchat.fxml");
     }
 	
 	

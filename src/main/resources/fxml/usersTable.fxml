@@ -10,18 +10,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="729.0" style="-fx-background-color: #D8F1EE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.UserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="729.0" style="-fx-background-color: #D8F1EE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.usersTableController">
    <children>
       <Label layoutX="245.0" layoutY="32.0" text="Table des utilisateurs">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="479.0" layoutY="87.0" prefWidth="165.0" promptText="Recherche">
+      <TextField fx:id="searchBar" layoutX="479.0" layoutY="87.0" prefWidth="165.0" promptText="Recherche">
          <font>
             <Font size="13.0" />
          </font></TextField>
-      <Button layoutX="104.0" layoutY="89.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="124.0" style="-fx-background-color: #3eb59d;" text="Ajouter un utiliateur">
+      <Button fx:id="addUserButton" layoutX="104.0" layoutY="89.0" mnemonicParsing="false" onAction="#versAddUser" prefHeight="24.0" prefWidth="124.0" style="-fx-background-color: #3eb59d;" text="Ajouter un utiliateur">
          <font>
             <Font size="11.0" />
          </font>
@@ -31,12 +31,12 @@
             <Image url="@../images/backgroundSmall.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="650.0" layoutY="88.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="65.0" style="-fx-background-color: #3eb59d;" text="Recherche">
+      <Button fx:id="search" layoutX="650.0" layoutY="88.0" mnemonicParsing="false" onAction="#search" prefHeight="21.0" prefWidth="65.0" style="-fx-background-color: #3eb59d;" text="Recherche">
          <font>
             <Font size="11.0" />
          </font>
       </Button>
-      <TableView id="userTableView" layoutX="104.0" layoutY="138.0" prefHeight="263.0" prefWidth="615.0">
+      <TableView id="userTableView" layoutX="104.0" layoutY="138.0" prefHeight="220.0" prefWidth="615.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Nom" />
           <TableColumn prefWidth="75.0" text="Prenom" />
@@ -50,5 +50,10 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Button fx:id="exitButton" layoutX="663.0" layoutY="364.0" mnemonicParsing="false" onAction="#exitPage" prefHeight="24.0" prefWidth="40.0" style="-fx-background-color: #3eb59d;" text="EXIT">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
