@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 public class UserService {
 
@@ -27,16 +28,10 @@ public class UserService {
     }
 
     private void loadAllUsers() {
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        
-        try {
-            connection = Database.getConnection();
-            String sql = "SELECT * FROM User";
-            statement = connection.prepareStatement(sql);
-            resultSet = statement.executeQuery();
-            
+        try (Connection connection = Database.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM User");
+             ResultSet resultSet = statement.executeQuery()) {
+
             while (resultSet.next()) {
                 String firstName = resultSet.getString("first_name");
                 String lastName = resultSet.getString("last_name");
@@ -44,80 +39,54 @@ public class UserService {
                 String tel = resultSet.getString("tel");
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
-                
+
                 User user = new User(firstName, lastName, email, tel, username, password);
                 userData.add(user);
             }
         } catch (SQLException e) {
             System.err.println("Error loading users from the database: " + e.getMessage());
             e.printStackTrace();
-        } finally {
-            Database.closeConnection(connection);
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (statement != null) {
-                try {
-                    statement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
-    
-    public boolean addUser(User user) {
-        Connection connection = null;
-        PreparedStatement statement = null;
-        try {
-            connection = Database.getConnection();
-            connection.setAutoCommit(false); // Start transaction
 
-            String sql = "INSERT INTO User (first_name, last_name, email, tel, username, password) " +
-                         "VALUES (?, ?, ?, ?, ?, ?)";
-            statement = connection.prepareStatement(sql);
-            
-            statement.setString(1, user.getFirstName().get());
-            statement.setString(2, user.getLastName().get());
-            statement.setString(3, user.getEmail().get());
-            statement.setString(4, user.getTel().get());
-            statement.setString(5, user.getUsername().get());
-            statement.setString(6, user.getPassword().get());
+    public boolean addUser(User user) {
+        try (Connection connection = Database.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "INSERT INTO User (firstName, lastName, email, tel, username, password) VALUES (?, ?, ?, ?, ?, ?)")) {
+
+            connection.setAutoCommit(false);
+
+            statement.setString(1, user.getFirstName());
+            statement.setString(2, user.getLastName());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getTel());
+            statement.setString(5, user.getUsername());
+            statement.setString(6, user.getPassword());
 
             int rowsAffected = statement.executeUpdate();
-            
-            connection.commit(); 
-            
+
+            connection.commit();
+
             if (rowsAffected > 0) {
-                userData.add(user); 
+                userData.add(user);
                 return true;
             } else {
+                showAlert(Alert.AlertType.ERROR, "Error adding user to the database", "No rows affected.");
                 return false;
             }
         } catch (SQLException e) {
-            if (connection != null) {
-                try {
-                    connection.rollback(); 
-                } catch (SQLException rollbackEx) {
-                    System.err.println("Error rolling back transaction: " + rollbackEx.getMessage());
-                }
-            }
             System.err.println("Error adding user to the database: " + e.getMessage());
             e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Database Error", "An error occurred while adding the user to the database: " + e.getMessage());
             return false;
-        } finally {
-            Database.closeConnection(connection); // Ensure connection is closed
-            if (statement != null) {
-                try {
-                    statement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

@@ -6,11 +6,16 @@ import java.sql.SQLException;
 
 public class Database {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:5011/pharmacy_db";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/pharmacy_db";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "10214ailaEL";
+    private static final String DB_PASSWORD = "";
 
     public static Connection getConnection() throws SQLException {
+    	try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
         return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
     }
 

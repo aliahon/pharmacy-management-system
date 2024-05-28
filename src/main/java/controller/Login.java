@@ -29,13 +29,17 @@ public class Login {
     private Connection connect;
     private ResultSet result;
     
-    private void initializeDbConnection() {
+    /*private void initializeDbConnection() {
         try {
-            connect = Database.getConnection();
+            Connection connect = Database.getConnection();
+            if (connect == null) {
+                throw new SQLException("Failed to establish a database connection.");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+            wrongLogin.setText("Failed to establish a database connection.");
         }
-    }
+    }*/
     
 
     @FXML
@@ -45,7 +49,7 @@ public class Login {
 
     @FXML
     private void checkLogin()  throws IOException{
-    	initializeDbConnection();
+    	//initializeDbConnection();
     	
         Main m = new Main();
         
@@ -57,9 +61,10 @@ public class Login {
         }else if(username.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
         	wrongLogin.setText("Tous les champs sont obligatoires!");
         }else{
+        	String sql = "SELECT * FROM user WHERE username = ? and password = ?";
         	try {
-                String sql = "SELECT * FROM User WHERE username = ? and password = ?";
-                prepare = connect.prepareStatement(sql);
+        		Connection connect = Database.getConnection();
+                PreparedStatement prepare = connect.prepareStatement(sql);
                 prepare.setString(1, username.getText().toString());
                 prepare.setString(2, password.getText().toString());
                 result = prepare.executeQuery();

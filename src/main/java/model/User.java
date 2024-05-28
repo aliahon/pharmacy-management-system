@@ -4,70 +4,111 @@ import javafx.beans.property.*;
 
 public class User {
 
-    private  StringProperty firstName;
-    private  StringProperty lastName;
-    private  StringProperty email;
-    private  StringProperty tel;
-    private  StringProperty username;
-    private  StringProperty password;
+    private StringProperty firstName;
+    private StringProperty lastName;
+    private StringProperty email;
+    private StringProperty tel;
+    private StringProperty username;
+    private StringProperty password;
 
     // Constructor
-    public User(String firstName,String lastName,String email,String tel,String username,String password) {
-        this.setFirstName(new SimpleStringProperty(firstName));
-        this.setLastName(new SimpleStringProperty(lastName));
-        this.setEmail(new SimpleStringProperty(email));
-        this.setTel(new SimpleStringProperty(tel));
-        this.setUsername(new SimpleStringProperty(username));
-        this.setPassword(new SimpleStringProperty(password));
+    public User(String firstName, String lastName, String email, String tel, String username, String password) {
+        this.firstName = new SimpleStringProperty(firstName);
+        this.lastName = new SimpleStringProperty(lastName);
+        this.email = new SimpleStringProperty(email);
+        this.tel = new SimpleStringProperty(tel);
+        this.username = new SimpleStringProperty(username);
+        this.password = new SimpleStringProperty(password);
     }
 
-	public StringProperty getFirstName() {
-		return firstName;
-	}
+    // Getters and setters for each property
+    public StringProperty firstNameProperty() {
+        if (firstName == null) {
+            firstName = new SimpleStringProperty(this, "firstName");
+        }
+        return firstName;
+    }
 
-	public void setFirstName(StringProperty firstName) {
-		this.firstName = firstName;
-	}
+    public void setFirstName(String firstName) {
+        firstNameProperty().set(firstName);
+    }
 
-	public StringProperty getLastName() {
-		return lastName;
-	}
+    public String getFirstName() {
+        return firstNameProperty().get();
+    }
 
-	public void setLastName(StringProperty lastName) {
-		this.lastName = lastName;
-	}
+    public StringProperty lastNameProperty() {
+        if (lastName == null) {
+            lastName = new SimpleStringProperty(this, "lastName");
+        }
+        return lastName;
+    }
 
-	public StringProperty getEmail() {
-		return email;
-	}
+    public void setLastName(String lastName) {
+        lastNameProperty().set(lastName);
+    }
 
-	public void setEmail(StringProperty email) {
-		this.email = email;
-	}
+    public String getLastName() {
+        return lastNameProperty().get();
+    }
 
-	public StringProperty getTel() {
-		return tel;
-	}
+    public StringProperty emailProperty() {
+        if (email == null) {
+            email = new SimpleStringProperty(this, "email");
+        }
+        return email;
+    }
 
-	public void setTel(StringProperty tel) {
-		this.tel = tel;
-	}
+    public void setEmail(String email) {
+        emailProperty().set(email);
+    }
 
-	public StringProperty getUsername() {
-		return username;
-	}
+    public String getEmail() {
+        return emailProperty().get();
+    }
 
-	public void setUsername(StringProperty username) {
-		this.username = username;
-	}
+    public StringProperty telProperty() {
+        if (tel == null) {
+            tel = new SimpleStringProperty(this, "tel");
+        }
+        return tel;
+    }
 
-	public StringProperty getPassword() {
-		return password;
-	}
+    public void setTel(String tel) {
+        telProperty().set(tel);
+    }
 
-	public void setPassword(StringProperty password) {
-		this.password = password;
-	}
+    public String getTel() {
+        return telProperty().get();
+    }
 
+    public StringProperty usernameProperty() {
+        if (username == null) {
+            username = new SimpleStringProperty(this, "username");
+        }
+        return username;
+    }
 
+    public void setUsername(String username) {
+        usernameProperty().set(username);
+    }
+
+    public String getUsername() {
+        return usernameProperty().get();
+    }
+
+    public StringProperty passwordProperty() {
+        if (password == null) {
+            password = new SimpleStringProperty(this, "password");
+        }
+        return password;
+    }
+
+    public void setPassword(String password) {
+        passwordProperty().set(password);
+    }
+
+    public String getPassword() {
+        return passwordProperty().get();
+    }
 }

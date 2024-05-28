@@ -1,42 +1,56 @@
 package main.java.model;
 
-import javafx.beans.property.*;
+import java.util.Date;
 
 public class Sale {
+    private Product product;
+    private int quantity;
+    private double totalPrice;
+    private Date saleDate;
 
-    private final StringProperty productName;
-    private final IntegerProperty quantity;
-
-    // Constructor
-    public Sale(String productName, int quantity) {
-        this.productName = new SimpleStringProperty(productName);
-        this.quantity = new SimpleIntegerProperty(quantity);
+    public Sale(Product product, int quantity, double totalPrice, Date saleDate) {
+        this.product = product;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+        this.saleDate = saleDate;
     }
 
-    // Getter methods
-    public String getProductName() {
-        return productName.get();
+    // Getters and setters for each field
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getQuantity() {
-        return quantity.get();
-    }
-
-    // Setter methods
-    public void setProductName(String productName) {
-        this.productName.set(productName);
+        return quantity;
     }
 
     public void setQuantity(int quantity) {
-        this.quantity.set(quantity);
+        this.quantity = quantity;
     }
 
-    // Property getters
-    public StringProperty productNameProperty() {
-        return productName;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
-    public IntegerProperty quantityProperty() {
-        return quantity;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public Date getSaleDate() {
+        return saleDate;
+    }
+
+    public void setSaleDate(Date saleDate) {
+        this.saleDate = saleDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Sale [product=" + product + ", quantity=" + quantity + ", totalPrice=" + totalPrice + ", saleDate="
+                + saleDate + "]";
     }
 }

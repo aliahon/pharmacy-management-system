@@ -1,42 +1,64 @@
 package main.java.model;
 
-import javafx.beans.property.*;
-
 public class Product {
-    
-    private final StringProperty productName;
-    private final IntegerProperty quantity;
+    private String name;
+    private String description;
+    private int quantity;
+    private double price;
+    private String expirationDate;
 
-    // Constructor
-    public Product(String productName, int quantity) {
-        this.productName = new SimpleStringProperty(productName);
-        this.quantity = new SimpleIntegerProperty(quantity);
+    public Product(String name, String description, int quantity, double price, String expirationDate) {
+        this.name = name;
+        this.description = description;
+        this.quantity = quantity;
+        this.price = price;
+        this.expirationDate = expirationDate;
     }
 
-    // Getter methods
-    public String getProductName() {
-        return productName.get();
+    // Getters and setters for each field
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getQuantity() {
-        return quantity.get();
-    }
-
-    // Setter methods
-    public void setProductName(String productName) {
-        this.productName.set(productName);
+        return quantity;
     }
 
     public void setQuantity(int quantity) {
-        this.quantity.set(quantity);
+        this.quantity = quantity;
     }
 
-    // Property getters
-    public StringProperty productNameProperty() {
-        return productName;
+    public double getPrice() {
+        return price;
     }
 
-    public IntegerProperty quantityProperty() {
-        return quantity;
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Product [name=" + name + ", description=" + description + ", quantity=" + quantity + ", price=" + price
+                + ", expirationDate=" + expirationDate + "]";
     }
 }
