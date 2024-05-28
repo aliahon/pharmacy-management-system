@@ -51,7 +51,7 @@
       <TextField fx:id="emailTextField" layoutX="101.0" layoutY="189.0" />
       <TextField fx:id="usernameTextField" layoutX="101.0" layoutY="271.0" />
       <TextField fx:id="telTextField" layoutX="324.0" layoutY="189.0" />
-      <Button fx:id="addUserButton" layoutX="261.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #3eb59d;" text="Ajouter">
+      <Button fx:id="addUserButton" layoutX="261.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleAddUser" style="-fx-background-color: #3eb59d;" text="Ajouter">
          <font>
             <Font size="17.0" />
          </font>
@@ -61,7 +61,7 @@
             <Image url="@../images/backgroundSmall.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="exitAddUser" layoutX="505.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #3eb59d;" text="Exit">
+      <Button fx:id="exitAddUser" layoutX="505.0" layoutY="325.0" mnemonicParsing="false" onAction="#exitPage" style="-fx-background-color: #3eb59d;" text="Exit">
          <font>
             <Font size="17.0" />
          </font>

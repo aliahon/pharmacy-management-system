@@ -1,23 +1,21 @@
 package main.java.controller;
 
+import main.java.Main;
 import main.java.model.User;
 import main.java.service.UserService;
-//import javafx.beans.property.StringProperty;
+
+import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 
 public class UserController {
-
-    @FXML
-    private TableView<User> userTableView; //hada howa id li t3ty l tableaux dylk
-
-    @FXML
-    private TableColumn<User, String> usernameColumn;
-
 
     @FXML
     private TextField firstNameTextField;
@@ -32,22 +30,22 @@ public class UserController {
     @FXML
     private PasswordField passwordPasswordField;
     
+    @FXML
+    private Button addUserButton;
+    @FXML
+    private Button exitAddUser;
+
     private UserService userService;
 
     public UserController() {
         this.userService = new UserService();
     }
-    
-/*  MARYAM HNA ADIRI L CODE DYL DIK LISTES DES UTILISATEURS
+
     @FXML
-    private void initialize() {
-        // Initialize table columns
-        usernameColumn.setCellValueFactory(cellData -
-        > cellData.getValue().usernameProperty());
-        // Populate table with existing users
-        userTableView.setItems(userService.getAllUsers());
-    }*/
-    
+    private void exitPage(ActionEvent event) throws IOException {
+        Main m = new Main();
+        m.changeScene("../resources/fxml/usersTable.fxml");
+    }
 
     @FXML
     private void handleAddUser() {
@@ -58,18 +56,64 @@ public class UserController {
         String username = usernameTextField.getText().trim();
         String password = passwordPasswordField.getText().trim();
 
-        if (!firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty() && !tel.isEmpty() && !username.isEmpty() && !password.isEmpty() ) {
-            User newUser = new User(firstName,lastName, email, tel,username,password);
+        if (isInputValid(firstName, lastName, email, tel, username, password)) {
+            User newUser = new User(firstName, lastName, email, tel, username, password);
             userService.addUser(newUser);
-            userTableView.getItems().add(newUser);
             clearFields();
-        } else {
-            showAlert("Error", "Please enter a username and a role.");
         }
     }
 
+    private boolean isInputValid(String firstName, String lastName, String email, String tel, String username, String password) {
+        StringBuilder errorMessage = new StringBuilder();
+
+        if (firstName.isEmpty()) {
+            errorMessage.append("First name is required.\n");
+        }
+        if (lastName.isEmpty()) {
+            errorMessage.append("Last name is required.\n");
+        }
+        if (email.isEmpty() || !isValidEmail(email)) {
+            errorMessage.append("A valid email is required.\n");
+        }
+        if (tel.isEmpty() || !isValidPhoneNumber(tel)) {
+            errorMessage.append("A valid phone number is required.\n");
+        }
+        if (username.isEmpty()) {
+            errorMessage.append("Username is required.\n");
+        }
+        if (password.isEmpty() || password.length() < 8) {
+            errorMessage.append("Password must be at least 8 characters long.\n");
+        }
+
+        if (errorMessage.length() > 0) {
+            showAlert("Invalid Input", errorMessage.toString());
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean isValidPhoneNumber(String tel) {
+        String phoneRegex = "\\d{10}";
+        Pattern pattern = Pattern.compile(phoneRegex);
+        Matcher matcher = pattern.matcher(tel);
+        return matcher.matches();
+    }
+
     private void clearFields() {
+        firstNameTextField.clear();
+        lastNameTextField.clear();
+        emailTextField.clear();
+        telTextField.clear();
         usernameTextField.clear();
+        passwordPasswordField.clear();
     }
 
     private void showAlert(String title, String message) {
