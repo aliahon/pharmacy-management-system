@@ -1,75 +1,92 @@
 package main.java.controller;
 
+import main.java.Main;
 import main.java.model.Product;
 import main.java.service.StockService;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class StockController {
 
-    @FXML
-    private TableView<Product> stockTableView;
 
     @FXML
-    private TableColumn<Product, String> productNameColumn;
+    private TextField nameTextField;
 
     @FXML
-    private TableColumn<Product, Integer> quantityColumn;
-
+    private TextField descriptionTextField;
     @FXML
-    private TextField productNameTextField;
-
+    private TextField manufacturerNameTextField;
     @FXML
     private TextField quantityTextField;
+    @FXML
+    private TextField priceTextField;
+    @FXML
+    private TextField expirationDateTextField;
+    @FXML
+    private TextField categorieTextField;
+    @FXML
+    private Button exitAddProduct;
+    @FXML
+    private Button addProductButton;
 
     private StockService stockService;
 
-    private ObservableList<Product> productList;
 
     public StockController() {
         stockService = new StockService();
-        productList = FXCollections.observableArrayList();
     }
-
     @FXML
-    private void initialize() {
-        // Initialize table columns
-        productNameColumn.setCellValueFactory(cellData -> cellData.getValue().productNameProperty());
-        quantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
-
-        // Populate table with existing products in stock
-        productList.addAll(stockService.getAllProducts());
-        stockTableView.setItems(productList);
+    private void exitPage(ActionEvent event) throws IOException {
+        Main m = new Main();
+        m.changeScene("../resources/fxml/productsTable.fxml");
     }
 
     @FXML
     private void handleAddProduct() {
-        String productName = productNameTextField.getText().trim();
+        String name = nameTextField.getText().trim();
+        String description = descriptionTextField.getText().trim();
+        String manufacturerName = manufacturerNameTextField.getText().trim();
         String quantityText = quantityTextField.getText().trim();
+        String priceText = priceTextField.getText().trim();
+        String expirationDateText = expirationDateTextField.getText().trim();
+        String categorie = categorieTextField.getText().trim();
 
-        if (!productName.isEmpty() && !quantityText.isEmpty()) {
+        if (!name.isEmpty() && !description.isEmpty() && !manufacturerName.isEmpty() && !priceText.isEmpty() && !expirationDateText.isEmpty() && !categorie.isEmpty() && !quantityText.isEmpty()) {
             try {
                 int quantity = Integer.parseInt(quantityText);
-                Product newProduct = new Product(productName, quantity);
+                double price = Double.parseDouble(priceText);
+                LocalDate expirationDate = LocalDate.parse(expirationDateText, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+                Product newProduct = new Product(name, description, manufacturerName, quantity, price, expirationDate, categorie);
                 stockService.addProduct(newProduct);
-                productList.add(newProduct);
                 clearFields();
             } catch (NumberFormatException e) {
-                showAlert("Error", "Please enter a valid quantity.");
+                showAlert("Error", "Please enter valid quantity and price.");
+            } catch (DateTimeParseException e) {
+                showAlert("Error", "Please enter a valid expiration date in the format yyyy-MM-dd.");
             }
         } else {
-            showAlert("Error", "Please enter a product name and quantity.");
+            showAlert("Error", "Please fill in all required fields.");
         }
     }
-
     private void clearFields() {
-        productNameTextField.clear();
+       nameTextField.clear();
+       descriptionTextField.clear();
+        manufacturerNameTextField.clear();
         quantityTextField.clear();
+         priceTextField.clear();
+        expirationDateTextField.clear();
+        categorieTextField.clear();
     }
 
     private void showAlert(String title, String message) {

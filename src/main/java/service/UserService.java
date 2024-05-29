@@ -29,12 +29,12 @@ public class UserService {
 
     private void loadAllUsers() {
         try (Connection connection = Database.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM User");
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM user");
              ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
-                String firstName = resultSet.getString("first_name");
-                String lastName = resultSet.getString("last_name");
+                String firstName = resultSet.getString("firstName");
+                String lastName = resultSet.getString("lastName");
                 String email = resultSet.getString("email");
                 String tel = resultSet.getString("tel");
                 String username = resultSet.getString("username");
@@ -52,7 +52,7 @@ public class UserService {
     public boolean addUser(User user) {
         try (Connection connection = Database.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO User (firstName, lastName, email, tel, username, password) VALUES (?, ?, ?, ?, ?, ?)")) {
+                     "INSERT INTO user (firstName, lastName, email, tel, username, password) VALUES (?, ?, ?, ?, ?, ?)")) {
 
             connection.setAutoCommit(false);
 
@@ -71,7 +71,7 @@ public class UserService {
                 userData.add(user);
                 return true;
             } else {
-                showAlert(Alert.AlertType.ERROR, "Error adding user to the database", "No rows affected.");
+                showAlert(Alert.AlertType.ERROR, "Erreur lors de l'ajout de l'utilisateur à la base de données : ", "Aucune ligne affectée.");
                 return false;
             }
         } catch (SQLException e) {
