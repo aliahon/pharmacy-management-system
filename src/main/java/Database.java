@@ -28,22 +28,6 @@ public class Database {
             }
         }
     }
-    public static void main(String[] args) {
-        try {
-            
-            Connection connection = Database.getConnection();
-            
-            
-            System.out.println("Connection to the database established successfully!");
-            
-            
-            Database.closeConnection(connection);
-        } catch (SQLException e) {
-           
-            System.err.println("Error connecting to the database: " + e.getMessage());
-            
-            e.printStackTrace();
-        }
-    }
+    
 }
 
