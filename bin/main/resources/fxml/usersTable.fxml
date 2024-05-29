@@ -36,15 +36,14 @@
             <Font size="11.0" />
          </font>
       </Button>
-      <TableView id="userTableView" layoutX="104.0" layoutY="138.0" prefHeight="220.0" prefWidth="615.0">
+      <TableView id="userTableView" fx:id="userTableView" layoutX="104.0" layoutY="138.0" prefHeight="220.0" prefWidth="615.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Nom" />
-          <TableColumn prefWidth="75.0" text="Prenom" />
-            <TableColumn prefWidth="75.0" text="Email" />
-            <TableColumn prefWidth="75.0" text="Tel" />
-            <TableColumn prefWidth="112.0" text="Date de naissance" />
-            <TableColumn prefWidth="93.0" text="Mot de passe" />
-            <TableColumn prefWidth="115.0" text="Actions" />
+          <TableColumn fx:id="nomColumn" prefWidth="75.0" text="Nom" />
+          <TableColumn fx:id="prenomColumn" prefWidth="75.0" text="Prenom" />
+            <TableColumn fx:id="emailColumn" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="telColumn" prefWidth="75.0" text="Tel" />
+            <TableColumn fx:id="nomUtilisateurColumn" prefWidth="112.0" text="Nom Utilisateur" />
+            <TableColumn fx:id="motDePasseColumn" prefWidth="93.0" text="Mot de passe" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -53,6 +52,16 @@
       <Button fx:id="exitButton" layoutX="663.0" layoutY="364.0" mnemonicParsing="false" onAction="#exitPage" prefHeight="24.0" prefWidth="40.0" style="-fx-background-color: #3eb59d;" text="EXIT">
          <font>
             <Font size="11.0" />
+         </font>
+      </Button>
+      <Button fx:id="deleteUserButton" layoutX="191.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleDeleteUser" prefHeight="24.0" prefWidth="74.0" style="-fx-background-color: #D84315;" text="Supprimer" textFill="#fffefe">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Button>
+      <Button fx:id="modifyUserButton" layoutX="104.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleModifyUser" prefHeight="24.0" prefWidth="74.0" style="-fx-background-color: #29B6F6;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="11.0" />
          </font>
       </Button>
    </children>

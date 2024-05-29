@@ -14,12 +14,10 @@ import javafx.scene.control.Alert;
 
 public class UserService {
 
-    private ObservableList<User> userData;
+	private ObservableList<User> userData;
 
     public UserService() {
-        // Initialize user data
         this.userData = FXCollections.observableArrayList();
-        // Load user data from database
         loadAllUsers();
     }
 
@@ -81,6 +79,51 @@ public class UserService {
             return false;
         }
     }
+    public boolean deleteUser(User user) {
+        try (Connection connection = Database.getConnection();
+             PreparedStatement statement = connection.prepareStatement("DELETE FROM user WHERE username = ?")) {
+            
+            statement.setString(1, user.getUsername());
+            
+            int rowsAffected = statement.executeUpdate();
+            
+            if (rowsAffected > 0) {
+                userData.remove(user);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error deleting user from the database: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean updateUser(User user) {
+        String query = "UPDATE user SET lastName = ?, firstName = ?, email = ?, username = ?, tel = ?, password = ? WHERE id = ?";
+        
+        try (Connection connection = Database.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, user.getLastName());
+            preparedStatement.setString(2, user.getFirstName());
+            preparedStatement.setString(3, user.getEmail());
+            preparedStatement.setString(4, user.getUsername());
+            preparedStatement.setString(5, user.getTel());
+            preparedStatement.setString(6, user.getPassword());
+            preparedStatement.setInt(7, user.getId());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);

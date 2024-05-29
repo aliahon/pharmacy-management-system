@@ -1,4 +1,4 @@
-package main.java.controller;
+    /*package main.java.controller;
 
 import main.java.model.Sale;
 import main.java.service.SalesService;
@@ -35,6 +35,7 @@ public class SalesController {
         salesService = new SalesService();
         salesList = FXCollections.observableArrayList();
     }
+    
 
     @FXML
     private void initialize() {
@@ -80,3 +81,4 @@ public class SalesController {
         alert.showAndWait();
     }
 }
+*/

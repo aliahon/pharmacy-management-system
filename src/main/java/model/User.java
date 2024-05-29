@@ -4,6 +4,7 @@ import javafx.beans.property.*;
 
 public class User {
 
+	private IntegerProperty id;
     private StringProperty firstName;
     private StringProperty lastName;
     private StringProperty email;
@@ -20,6 +21,16 @@ public class User {
         this.username = new SimpleStringProperty(username);
         this.password = new SimpleStringProperty(password);
     }
+    // Constructor
+    	public User(int id,String firstName, String lastName, String email, String tel, String username, String password) {
+    		this.id = new SimpleIntegerProperty(id);
+    		this.firstName = new SimpleStringProperty(firstName);
+    		this.lastName = new SimpleStringProperty(lastName);
+    		this.email = new SimpleStringProperty(email);
+    		this.tel = new SimpleStringProperty(tel);
+    		this.username = new SimpleStringProperty(username);
+    		this.password = new SimpleStringProperty(password);
+    	}
 
     // Getters and setters for each property
     public StringProperty firstNameProperty() {
@@ -110,5 +121,16 @@ public class User {
 
     public String getPassword() {
         return passwordProperty().get();
+    }
+
+    public IntegerProperty idProperty() {
+        if (id == null) {
+            id = new SimpleIntegerProperty(this, "id");
+        }
+        return id;
+    }
+
+    public int getId() {
+        return idProperty().get();
     }
 }

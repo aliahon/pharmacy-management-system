@@ -34,13 +34,44 @@ public class UserController {
     private Button addUserButton;
     @FXML
     private Button exitAddUser;
+    @FXML
+    private Button exitModifyUser;
 
     private UserService userService;
+    private User user;
 
     public UserController() {
         this.userService = new UserService();
     }
+    public void setUser(User user) {
+        this.user = user;
+        lastNameTextField.setText(user.getLastName());
+        lastNameTextField.setText(user.getLastName());
+        firstNameTextField.setText(user.getFirstName());
+        emailTextField.setText(user.getEmail());
+        usernameTextField.setText(user.getUsername());
+        telTextField.setText(user.getTel());
+        passwordPasswordField.setText(user.getPassword());
+    }
 
+    
+    @FXML
+    private void handleModifyUserAction(ActionEvent event) {
+        user.setLastName(lastNameTextField.getText());
+        user.setFirstName(firstNameTextField.getText());
+        user.setEmail(emailTextField.getText());
+        user.setUsername(usernameTextField.getText());
+        user.setTel(telTextField.getText());
+        user.setPassword(passwordPasswordField.getText());
+
+        boolean success = userService.updateUser(user);
+        if (success) {
+            showAlert(Alert.AlertType.INFORMATION, "Succès", "Utilisateur modifié avec succès.");
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de modifier l'utilisateur.");
+        }
+    }
+    
     @FXML
     private void exitPage(ActionEvent event) throws IOException {
         Main m = new Main();
@@ -86,7 +117,7 @@ public class UserController {
         }
 
         if (errorMessage.length() > 0) {
-            showAlert("Invalid Input", errorMessage.toString());
+            showAlert(Alert.AlertType.ERROR,"Invalid Input", errorMessage.toString());
             return false;
         } else {
             return true;
@@ -116,8 +147,8 @@ public class UserController {
         passwordPasswordField.clear();
     }
 
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
