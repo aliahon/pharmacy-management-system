@@ -1,5 +1,5 @@
-    /*package main.java.controller;
-
+    package main.java.controller;
+    /*
 import main.java.model.Sale;
 import main.java.service.SalesService;
 import javafx.collections.FXCollections;
